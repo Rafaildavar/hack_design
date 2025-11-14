@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# hac_ 🚀
 
-## Getting Started
+AI-ассистент для образования с генерацией расписания, конспектов, изображений и автоматизацией через Telegram-бота.
 
-First, run the development server:
+## 🎯 О проекте
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**hac_** - это комплексное решение для автоматизации учебного процесса, которое помогает студентам:
+- 📅 Генерировать персональное расписание занятий
+- 📝 Создавать конспекты, планы уроков и карточки для запоминания
+- 🎨 Генерировать учебные иллюстрации, мемы и схемы
+- 🤖 Получать ежедневные дайджесты через Telegram
+- 💬 Общаться с AI-ассистентом для помощи в учебе
+
+## 🏗️ Архитектура
+
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   Frontend  │────▶│   Backend   │────▶│     AI      │
+│  (Next.js)  │     │  (FastAPI)  │     │  (OpenAI/   │
+│             │     │             │     │   Mistral)  │
+└─────────────┘     └─────────────┘     └─────────────┘
+                            │
+                            ▼
+                    ┌─────────────┐
+                    │     n8n     │────▶ Telegram Bot
+                    │ (Automation)│
+                    └─────────────┘
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Технологии
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Frontend
+- **Next.js** - React фреймворк
+- **TailwindCSS** - Utility-first CSS
+- **shadcn/ui** - Современные UI компоненты
+- **Clerk/Auth.js** - Авторизация
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Backend
+- **FastAPI** - Современный Python веб-фреймворк
+- **SQLite/Postgres** - База данных
+- **Docker** - Контейнеризация
 
-## Learn More
+### AI & Интеграции
+- **OpenAI GPT** / **Mistral** - Текстовая генерация
+- **Flux** / **DALL-E** - Генерация изображений
+- **n8n** - Автоматизация и workflows
+- **Telegram Bot API** - Интеграция с Telegram
 
-To learn more about Next.js, take a look at the following resources:
+## 📚 Документация
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 📋 **[ТЗ для команды](./docs/TEAM_TASKS.md)** - Детальные задачи для каждого участника
+- ⏱ **[Чекпоинты по времени](./docs/CHECKPOINTS.md)** - Таймлайн и контрольные точки
+- 🚀 **[Инструкция по запуску](./docs/SETUP_GUIDE.md)** - Быстрый старт и настройка
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Быстрый старт
 
-## Deploy on Vercel
+### 1. Клонирование
+```bash
+git clone https://github.com/Rafaildavar/-_-.git
+cd "ХАКАТОН ДИЗАЙН"
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Настройка
+```bash
+cp .env.example .env
+# Добавьте ваши API ключи в .env
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 3. Запуск
+```bash
+docker-compose up -d
+```
+
+### 4. Доступ
+- **Backend API**: http://localhost:8000/docs
+- **n8n**: http://localhost:5678
+- **Frontend**: http://localhost:3000
+
+Подробная инструкция: [SETUP_GUIDE.md](./docs/SETUP_GUIDE.md)
+
+## 📁 Структура проекта
+
+```
+hac_/
+├── frontend/          # Next.js приложение
+├── backend/           # FastAPI сервер
+│   ├── app/
+│   │   ├── api/      # API эндпоинты
+│   │   └── services/ # AI сервисы
+├── n8n/              # n8n workflows
+├── docs/             # Документация
+│   ├── TEAM_TASKS.md
+│   ├── CHECKPOINTS.md
+│   └── SETUP_GUIDE.md
+└── docker-compose.yml
+```
+
+## 🎯 API Эндпоинты
+
+- `POST /api/assistant` - Диалог с AI-ассистентом
+- `POST /api/schedule` - Генерация расписания
+- `POST /api/lesson` - Генерация урока/конспекта/карточек
+- `POST /api/image` - Генерация изображений
+- `POST /api/tg/send` - Отправка в Telegram
+- `POST /api/n8n/webhook` - Webhook для n8n
+
+Полная документация: http://localhost:8000/docs
+
+## 👥 Команда
+
+- **Тимлид/Архитектор** - Общая координация, Docker, интеграции
+- **Фронтенд Lead** - Next.js интерфейс, UI/UX
+- **Бэкенд разработчик** - FastAPI, AI интеграции
+- **Интеграции** - n8n workflows, Telegram бот
+- **Дизайнер/QA/Pitch** - Дизайн, тестирование, презентация
+
+## 🎤 Питч (5 минут)
+
+1. **Проблема** - Студенты тратят много времени на рутинные задачи
+2. **Решение** - AI-ассистент с автоматизацией
+3. **Демонстрация** - Показать все фичи
+4. **Архитектура** - Техническая реализация
+5. **Выгоды** - Экономичность, скорость, масштабируемость
+
+## 🏆 Критерии успеха
+
+- ✅ Все заявленные фичи работают
+- ✅ Современный и привлекательный UI
+- ✅ Чистая архитектура и масштабируемость
+- ✅ Четкий питч и хорошее демо
+- ✅ Инновационное использование AI
+
+## 📝 Лицензия
+
+Проект создан для хакатона.
+
+---
+
+**Сделано с ❤️ командой hac_**
